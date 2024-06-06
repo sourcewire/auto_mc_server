@@ -1,0 +1,39 @@
+- name: Setup Minecraft Server
+  hosts: minecraft
+  become: yes
+  tasks:
+    - name: Update apt repository and install Docker
+      apt:
+        update_cache: yes
+        name: docker.io
+        state: present
+
+    - name: Ensure Docker service is running and enabled on boot
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Pull Minecraft Docker image
+      docker_image:
+        name: itzg/minecraft-server
+        source: pull
+
+    - name: Create Minecraft server data directory
+      file:
+        path: /home/ubuntu/minecraft_server_data
+        state: directory
+        owner: ubuntu
+        group: ubuntu
+
+    - name: Run Minecraft Docker container
+      docker_container:
+        name: cs312_minecraft_server
+        image: itzg/minecraft-server
+        state: started
+        ports:
+          - "25565:25565"
+        volumes:
+          - /home/ubuntu/minecraft_server_data:/data
+        env:
+          EULA: "TRUE"
