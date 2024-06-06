@@ -37,3 +37,29 @@
           - /home/ubuntu/minecraft_server_data:/data
         env:
           EULA: "TRUE"
+
+    - name: Create systemd service file for Minecraft server
+      copy:
+        dest: /etc/systemd/system/minecraft.service
+        content: |
+          [Unit]
+          Description=Minecraft Server
+          After=docker.service network.target
+
+          [Service]
+          Restart=always
+          ExecStart=/usr/bin/docker start -a cs312_minecraft_server
+          ExecStop=/usr/bin/docker stop -t 2 cs312_minecraft_server
+
+          [Install]
+          WantedBy=multi-user.target
+
+    - name: Reload systemd to read the newly created service unit file
+      command: sudo systemctl daemon-reload
+
+    - name: Enable the Minecraft service to start on boot
+      systemd:
+        name: minecraft
+        enabled: yes
+        state: started
+
