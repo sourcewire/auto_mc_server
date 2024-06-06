@@ -17,7 +17,7 @@ resource "aws_security_group" "minecraft_sg" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]  # Allow SSH access from all IP addresses
   }
-  
+
   ingress {
     from_port   = 25565
     to_port     = 25565
@@ -54,16 +54,5 @@ resource "aws_instance" "minecraft" {
     private_key = file("/Users/preston/.ssh/minecraft")
     host        = self.public_ip
   }
-
-  provisioner "remote-exec" {
-    inline = [
-      "sudo apt-get update -y",
-      "sudo apt-get install -y docker.io",
-      "sudo systemctl start docker",
-      "sudo systemctl enable docker",
-      "sudo docker pull itzg/minecraft-server",
-      "mkdir -p minecraft_server_data",
-      "sudo docker run -d -p 25565:25565 --name=cs312_minecraft_server -e EULA=TRUE -v $(pwd)/minecraft_server_data:/data itzg/minecraft-server"
-    ]
-  }
+  
 }
