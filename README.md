@@ -52,11 +52,9 @@ e. The aws ec2 instance should now be up and running.
 5. Verify Minecraft server reboots when ec2 instance reboots:
 Get the instance id of the ec2 instance:  
 `aws ec2 describe-instances`  
-Copy the 'InstanceId'
-
+Copy the 'InstanceId'  
 Reboot the instance:  
-`aws ec2 reboot-instances --instance-ids <enter instance id here`
-
+`aws ec2 reboot-instances --instance-ids <enter instance id here`  
 Run nmap again to verify Minecraft Server is running:  
 `nmap -sV -Pn -p T:25565 <current IP>`
 
