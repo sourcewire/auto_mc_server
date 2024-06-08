@@ -7,7 +7,7 @@ We are going to write infrastructure as code that fully automates the  provision
 - We need to make sure we have valid aws credentials configured properly in our `~/.aws/credentials`. These can be found at 'Launch AWS Academy Learner Lab' -> aws cli.
 
 - You can set your aws credentials to be environment variables and create a script to save them each time you start a new aws lab. We'll call it `set_aws_credentials.sh` This way we dont need to configure the `~/.aws/credentials` file every time:
-<!--
+---
 #!/bin/bash
 
 echo "Setting AWS environment variables..."
@@ -16,7 +16,7 @@ export AWS_SECRET_ACCESS_KEY="YOUR_NEW_SECRET_ACCESS_KEY"
 export AWS_SESSION_TOKEN="YOUR_NEW_SESSION_TOKEN"
 
 echo "AWS environment variables set."
--->
+---
 
 - Make the script executable: `chmod +x set_aws_credentials.sh`
 - Run the script: `source /path/to/your/script/set_aws_credentials.sh`
