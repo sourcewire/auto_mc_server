@@ -38,13 +38,35 @@
           - /home/ubuntu/minecraft_server_data:/data
         env:
           EULA: "TRUE"
+    
+    - name: Create systemd service file for Minecraft server
+      copy:
+        dest: /etc/systemd/system/minecraft.service
+        content: |
+          [Unit]
+          Description=Minecraft Server
+          After=docker.service network.target
+          [Service]
+          Restart=always
+          ExecStart=/usr/bin/docker start -a cs312_minecraft_server
+          ExecStop=/usr/bin/docker stop -t 2 cs312_minecraft_server
+          [Install]
+          WantedBy=multi-user.target
+    - name: Reload systemd to read the newly created service unit file
+      command: sudo systemctl daemon-reload
 
-    - name: Run nmap to check Minecraft server port
-      command: >
-        nmap -sV -Pn -p T:25565 54.186.110.29
-      register: nmap_output
-      delegate_to: localhost
+    - name: Enable the Minecraft service to start on boot
+      systemd:
+        name: minecraft
+        enabled: yes
+        state: started
 
-    - name: Output nmap results
-      debug:
-        var: nmap_output.stdout
+    #- name: Run nmap to check Minecraft server port
+    #  command: >
+    #    nmap -sV -Pn -p T:25565 54.191.68.53
+    #  register: nmap_output
+    #  delegate_to: localhost
+
+    #- name: Output nmap results
+    #  debug:
+    #    var: nmap_output.stdout
