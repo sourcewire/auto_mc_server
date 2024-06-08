@@ -1,6 +1,6 @@
 # Automated Minecraft Server
 
-## Background
+### Background
 We are going to write infrastructure as code that fully automates the  provisioning, configuration, and setup of a Minecraft server. We're going to use Terraform to get our AWS instance up and running, Ansible to write our plybook that will install and configuure our minecraft server, and we will be using a docker container as the source of the Minecraft server code.
 
 ### Requirements
@@ -31,6 +31,7 @@ on darwin_arm64
 - ansible [core 2.17.0]
 - Docker version 26.1.1
 
+### Diagram of major steps in pipeline
 
 ### Tutorial to run the code/scripts/provisioning/configuration
 1. Initialize and apply the Terraform configuration:  
@@ -50,13 +51,13 @@ e. The aws ec2 instance should now be up and running.
 `nmap -sV -Pn -p T:25565 <current IP>`
 
 5. Verify Minecraft server reboots when ec2 instance reboots:
-Get the instance id of the ec2 instance:  
-`aws ec2 describe-instances`  
-Copy the 'InstanceId'  
-Reboot the instance:  
-`aws ec2 reboot-instances --instance-ids <enter instance id here`  
-Run nmap again to verify Minecraft Server is running:  
-`nmap -sV -Pn -p T:25565 <current IP>`
+a. Get the instance id of the ec2 instance:  
+b. `aws ec2 describe-instances`  
+c. Copy the 'InstanceId'  
+d. Reboot the instance:  
+e. `aws ec2 reboot-instances --instance-ids <enter instance id here`  
+f. Run nmap again to verify Minecraft Server is running:  
+g. `nmap -sV -Pn -p T:25565 <current IP>`
 
 
 
