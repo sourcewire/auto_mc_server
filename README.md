@@ -32,6 +32,7 @@ on darwin_arm64
 - Docker version 26.1.1
 
 ### Diagram of major steps in pipeline
+```mermaid
 graph TD
     A[Install Tools] --> B[AWS CLI setup]
     C --> D[Run terraform scripts]
@@ -39,7 +40,7 @@ graph TD
     G --> H[Run ansible playbook]
     I --> J[Play]
 
-
+```
 
 ### Tutorial to run the code/scripts/provisioning/configuration
 1. Initialize and apply the Terraform configuration:  
