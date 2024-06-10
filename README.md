@@ -32,6 +32,14 @@ on darwin_arm64
 - Docker version 26.1.1
 
 ### Diagram of major steps in pipeline
+graph TD
+    A[Install Tools] --> B[AWS CLI setup]
+    B --> C[Run terraform scripts]
+    C --> D[Copy IP to hosts file]
+    E --> F[Run ansible playbook]
+    G --> H[Play]
+
+
 
 ### Tutorial to run the code/scripts/provisioning/configuration
 1. Initialize and apply the Terraform configuration:  
@@ -55,8 +63,8 @@ a. Get the instance id of the ec2 instance:
 b. `aws ec2 describe-instances`  
 c. Copy the 'InstanceId'  
 d. Reboot the instance:  
-e. `aws ec2 reboot-instances --instance-ids <enter instance id here`  
-f. Run nmap again to verify Minecraft Server is running:  
+e. `aws ec2 reboot-instances --instance-ids <enter instance id here>`  
+f. Run nmap again to verify Minecraft server is running:  
 g. `nmap -sV -Pn -p T:25565 <current IP>`
 
 
