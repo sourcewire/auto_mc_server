@@ -32,13 +32,14 @@ on darwin_arm64
 - Docker version 26.1.1
 
 ### Diagram of major steps in pipeline
+
 ```mermaid
 graph TD
     A[Install Tools] --> B[AWS CLI setup]
-    C --> D[Run terraform scripts]
-    E --> F[Copy IP to hosts file]
-    G --> H[Run ansible playbook]
-    I --> J[Play]
+    B --> C[Run terraform scripts]
+    D --> E[Copy IP to hosts file]
+    F --> G[Run ansible playbook]
+    H --> I[Play]
 
 ```
 
