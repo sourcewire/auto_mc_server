@@ -37,9 +37,9 @@ on darwin_arm64
 graph TD
     A[Install Tools] --> B[AWS CLI setup]
     B --> C[Run terraform scripts]
-    D --> E[Copy IP to hosts file]
-    F --> G[Run ansible playbook]
-    H --> I[Play]
+    C --> D[Copy IP to hosts file]
+    D --> E[Run ansible playbook]
+    E --> F[Play]
 
 ```
 
