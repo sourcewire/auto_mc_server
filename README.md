@@ -34,10 +34,10 @@ on darwin_arm64
 ### Diagram of major steps in pipeline
 graph TD
     A[Install Tools] --> B[AWS CLI setup]
-    B --> C[Run terraform scripts]
-    C --> D[Copy IP to hosts file]
-    E --> F[Run ansible playbook]
-    G --> H[Play]
+    C --> D[Run terraform scripts]
+    E --> F[Copy IP to hosts file]
+    G --> H[Run ansible playbook]
+    I --> J[Play]
 
 
 
