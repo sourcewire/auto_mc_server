@@ -65,7 +65,9 @@ e. `aws ec2 reboot-instances --instance-ids <enter instance id here>`
 f. Run nmap again to verify Minecraft server is running:  
 g. `nmap -sV -Pn -p T:25565 <current IP>`
 
-
+### How to connect to Server
+a. `aws ec2 describe-instances`
+b. `ssh -i ~/.ssh/minecraft ubuntu@<Public-IP>`
 
 ### Resources/Sources used
 1. [1] Chatgpt, https://openai.com/chatgpt/ (accessed Jun. 6, 2024). 
