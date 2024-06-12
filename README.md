@@ -51,10 +51,10 @@ d. Wait for the script to finish running.
 e. The aws ec2 instance should now be up and running.  
 
 2. Run Ansible playbook to start the Minecraft Server from Docker image:  
-`ansible-playbook -i hosts minecraft.yml`
+a. a. `ansible-playbook -i hosts minecraft.yml`
 
 3. Verify Minecraft server is running with nmap:  
-`nmap -sV -Pn -p T:25565 <current IP>`
+a. `nmap -sV -Pn -p T:25565 <current IP>`
 
 4. Verify Minecraft server reboots when ec2 instance reboots:  
 a. Get the instance id of the ec2 instance:  
@@ -66,8 +66,8 @@ f. Run nmap again to verify Minecraft server is running:
 g. `nmap -sV -Pn -p T:25565 <current IP>`
 
 ### How to connect to Server
-a. `aws ec2 describe-instances`
+a. `aws ec2 describe-instances`  
 b. `ssh -i ~/.ssh/minecraft ubuntu@<Public-IP>`
 
 ### Resources/Sources used
-1. [1] Chatgpt, https://openai.com/chatgpt/ (accessed Jun. 6, 2024). 
+a. Chatgpt, https://openai.com/chatgpt/ (accessed Jun. 6, 2024). 
