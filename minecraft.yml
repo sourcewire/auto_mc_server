@@ -61,12 +61,4 @@
         enabled: yes
         state: started
 
-    #- name: Run nmap to check Minecraft server port
-    #  command: >
-    #    nmap -sV -Pn -p T:25565 54.191.68.53
-    #  register: nmap_output
-    #  delegate_to: localhost
-
-    #- name: Output nmap results
-    #  debug:
-    #    var: nmap_output.stdout
+   

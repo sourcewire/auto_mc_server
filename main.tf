@@ -48,6 +48,14 @@ resource "aws_instance" "minecraft" {
     command = "echo ${self.public_ip} > public_ip.txt"
   }
 
+  provisioner "local-exec" {
+    command = <<EOT
+      #!/bin/bash
+      echo "${self.public_ip}" > public_ip.txt
+      ./populate_hosts.sh
+    EOT
+  }
+
   connection {
     type        = "ssh"
     user        = "ubuntu"
@@ -56,3 +64,4 @@ resource "aws_instance" "minecraft" {
   }
   
 }
+
